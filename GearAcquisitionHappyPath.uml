@@ -2,49 +2,56 @@
 
 ''''' states
 
-readyToHarvest : harvesting grabber is open
-readyToHarvest : harvesting arm is down and in
-readyToHarvest : harvesting wheels are off
+readyToHarvest : gearGrab=Open
+readyToHarvest : armHorizontalGo=In
+readyToHarvest : armVerticalGo=Down
+readyToHarvest : harvDrive=Off
 
-waitingForHarvestState : harvesting grabber is open
-waitingForHarvestState : harvesting arm is down and out
-waitingForHarvestState : harvesting wheels are on
+waitingForHarvestState : gearGrab=Open
+waitingForHarvestState : armHorizontalGo=Out
+waitingForHarvestState : armVerticalGo=Down
+waitingForHarvestState : harvDrive=On
 
-waitingForGearInHarvester : harvesting grabber is open
-waitingForGearInHarvester : harvesting arm is down and out 
-waitingForGearInHarvester : harvesting wheels are at speed
+waitingForGearInHarvester : gearGrab=Open
+waitingForGearInHarvester : armHorizontalGo=Out
+waitingForGearInHarvester : armVerticalGo=Down 
+waitingForGearInHarvester : harvDrive=On
 
-grabbingGear : harvesting grabber is closed
-grabbingGear : harvesting arm is down and out
-grabbingGear : harvesting wheels are on
+grabbingGear : gearGrab=Closed
+grabbingGear : armHorizontalGo=Out
+grabbingGear : armVerticalGo=Down 
+grabbingGear : harvDrive=On
 
-gearIsGrabbed : harvesting grabber is closed
-gearIsGrabbed : harvesting arm is down and out
-gearIsGrabbed : harvesting wheels are off
+gearIsGrabbed : gearGrab=Closed
+gearIsGrabbed : armHorizontalGo=Out
+gearIsGrabbed : armVeticalGo=Down
+gearIsGrabbed : harvDrive=Off
 
-raisingArm : harvesting grabber is closed
-raisingArm : harvesting arm is moving up and in
-raisingArm : harvesting wheels are not at speed
+raisingArm : gearGrab=Closed
+raisingArm : armHorizontalGo=In
+raisingArm : armVerticalGo=Up
+raisingArm : harvDrive=Off
 
-gearIsSecured : harvesting grabber is closed
-gearIsSecured : harvesting arm is up and in
-gearIsSecured : harvesting wheels are off
+gearIsSecured : gearGrab=Closed
+gearIsSecured : armHorizontalGo=In
+gearIsSecured : armVerticalGo=Up
+gearIsSecured : harvDrive=Off
 
 ''''' transitions
 
 [*] -right-> readyToHarvest
 
-readyToHarvest -right-> waitingForHarvestState: doGearSequence/\n harvDrive=On\n armGoOut 
+readyToHarvest -right-> waitingForHarvestState: doGearSequence/\n harvDrive=On\n armHorizontalGo=Out 
 
 waitingForHarvestState -right-> waitingForGearInHarvester: wheelsAtSpeed=T
 
-waitingForGearInHarvester -down-> grabbingGear: gearInGrabber=T/\n gearGrabClose=On
+waitingForGearInHarvester -down-> grabbingGear: gearInGrabber=T/\n gearGrab=Close
 
 grabbingGear -left-> gearIsGrabbed: gearInGrabber=T/\n harvDrive=Off
 
-gearIsGrabbed -left-> raisingArm: gearInGrabber=T\n wheelsAtSpeed=F/\n armGoIn\n armGoUp
+gearIsGrabbed -left-> raisingArm: gearInGrabber=T\n wheelsAtSpeed=F/\n armHorizontalGo=In\n armVerticalGo=Up
 
-raisingArm -down-> gearIsSecured: gearInGrabber=T\n armIsIn\n armIsUp
+raisingArm -down-> gearIsSecured: gearInGrabber=T\n armHorizontalPos=In\n armVeticalPos=Up
 
 gearIsSecured -right-> [*]
 
