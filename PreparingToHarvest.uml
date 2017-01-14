@@ -1,0 +1,31 @@
+@startuml
+''''' states
+	state PrepareToHarvest {
+	start : gearGrab=?
+	start : armHorizontalGo=?
+	start : armVerticalGo=?
+	start : harvDrive=?
+	
+	notReady : gearGrab=Open
+	notReady : armHorizontalGo=In
+	notReady : armVerticalGo=Down
+	notReady : harvDrive=Off
+	
+	readyToHarvest : gearGrab=Open
+	readyToHarvest : armHorizontalGo=In
+	readyToHarvest : armVerticalGo=Down
+	readyToHarvest : harvDrive=Off
+}
+''''' transitions
+
+[*] --> start
+
+start --> readyToHarvest: gearGrab=Open\n armHorizontalPos=In\n armVerticalPos=Down\n harvDrive=Off
+
+start -down-> notReady: gearGrab!=Open ||\n armHorizontalPos!=In ||\n armVerticalPos!=Down ||\n harvDrive!=Off/\n gearGrab=Open\n armHorizontalGo=In\n armVerticalGo=Down\n harvDrive=Off
+
+notReady -right-> readyToHarvest: gearGrab=Open\n armHorizontalPos=In\n armVerticalPos=Down\n harvDrive=Off
+
+readyToHarvest --> [*]
+
+@enduml
