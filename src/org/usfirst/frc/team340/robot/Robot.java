@@ -1,7 +1,7 @@
-
 package org.usfirst.frc.team340.robot;
 
 import org.usfirst.frc.team340.robot.subsystems.Drive;
+import org.usfirst.frc.team340.robot.subsystems.PneumaticDrop;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -18,11 +18,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * directory.
  */
 public class Robot extends IterativeRobot {
-	public static OI oi;
-	public static Drive drive;
+    public static OI oi;
+    public static Drive drive;
+    public static PneumaticDrop drop;
 
-	Command autonomousCommand;
-	SendableChooser<Command> chooser = new SendableChooser<>();
+    Command autonomousCommand;
+//    SendableChooser<Command> chooser = new SendableChooser<>();
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -30,10 +31,11 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
-		oi = new OI();
-		drive = new Drive();
-		// chooser.addObject("My Auto", new MyAutoCommand());
-		SmartDashboard.putData("Auto mode", chooser);
+	    oi = new OI();
+	    drive = new Drive();
+	    drop = new PneumaticDrop();
+	    // chooser.addObject("My Auto", new MyAutoCommand());
+//	    SmartDashboard.putData("Auto mode", chooser);
 	}
 
 	/**
