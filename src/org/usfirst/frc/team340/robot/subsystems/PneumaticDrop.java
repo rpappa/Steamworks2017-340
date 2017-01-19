@@ -15,14 +15,14 @@ public class PneumaticDrop extends Subsystem {
     
     @Override
     protected void initDefaultCommand() {
-	//Nothing to see here
+    	//Nothing to see here
     }
     
     public void toggleSolenoid() {
-	solenoid.set(!solenoid.get());
+    	solenoid.set(!solenoid.get());
     }
     
     public void setSolenoid(boolean isEnabled) {
-	solenoid.set(isEnabled);
+    	solenoid.set(isEnabled);
     }
 }

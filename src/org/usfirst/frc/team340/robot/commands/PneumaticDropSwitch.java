@@ -27,16 +27,16 @@ public class PneumaticDropSwitch extends Command {
 
     @Override
     protected void initialize() {
-	//Nothing to see here, move along
+    	//Nothing to see here, move along
     }
 
     @Override
     protected void execute() {
-	if(mode == null) {
-	    Robot.drop.toggleSolenoid();
-	} else {
-	    Robot.drop.setSolenoid(mode.booleanValue());
-	}
+    	if(mode == null) {
+    		Robot.drop.toggleSolenoid();
+    	} else {
+    		Robot.drop.setSolenoid(mode.booleanValue());
+    	}
     }
 
     @Override
@@ -46,11 +46,11 @@ public class PneumaticDropSwitch extends Command {
 
     @Override
     protected void end() {
-	//Doesn't do anything
+    	//Doesn't do anything
     }
 
     @Override
     protected void interrupted() {
-	//Nothing to do here
+    	//Nothing to do here
     }
 }

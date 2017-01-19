@@ -27,13 +27,13 @@ public class Drive extends Subsystem {
      * speed to go at [-1 ~ 1]
      */
     public void setLeftDrive(double speed) {
-	if(speed < -1) {
-	    speed = -1;
-	} else if(speed > 1) {
-	    speed = 1;
-	}
+    	if(speed < -1) {
+    		speed = -1;
+    	} else if(speed > 1) {
+    		speed = 1;
+    	}
 	
-	leftDrive.set(speed);
+    	leftDrive.set(speed);
     }
     
     /**
@@ -43,13 +43,13 @@ public class Drive extends Subsystem {
      * speed to go at [-1 ~ 1]
      */
     public void setRightDrive(double speed) {
-	if(speed < -1) {
-	    speed = -1;
-	} else if(speed > 1) {
-	    speed = 1;
-	}
+    	if(speed < -1) {
+    		speed = -1;
+    	} else if(speed > 1) {
+    		speed = 1;
+    	}
 	
-	rightDrive.set(-speed);
+    	rightDrive.set(-speed);
     }
     
     /**
@@ -59,7 +59,7 @@ public class Drive extends Subsystem {
      * rails to
      */
     public void setBothDrive(double speed) {
-	setBothDrive(speed, speed);
+    	setBothDrive(speed, speed);
     }
     
     /**
@@ -69,7 +69,7 @@ public class Drive extends Subsystem {
      * @param rSpeed right speed
      */
     public void setBothDrive(double lSpeed, double rSpeed) {
-	setLeftDrive(lSpeed);
-	setRightDrive(rSpeed);
+    	setLeftDrive(lSpeed);
+    	setRightDrive(rSpeed);
     }
 }

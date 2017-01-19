@@ -20,11 +20,12 @@ public class DriveXbox extends Command {
 
     @Override
     protected void initialize() {
-	Robot.drive.setBothDrive(0);
+    	Robot.drive.setBothDrive(0);
     }
 
     @Override
     protected void execute() {
+    	//TODO: this
     }
 
     @Override
@@ -34,11 +35,11 @@ public class DriveXbox extends Command {
 
     @Override
     protected void end() {
-	Robot.drive.setBothDrive(0);
+    	Robot.drive.setBothDrive(0);
     }
 
     @Override
     protected void interrupted() {
-	end();
+    	end();
     }
 }
