@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
+@SuppressWarnings("unused")
 public class OI {
 	
 	//TODO: enumerate correct integers
@@ -26,7 +27,7 @@ public class OI {
 	private Button driverStart = new JoystickButton(driver, 9);
 	
 	//CO-DRIVER
-	private Joystick coDriver = new Joystick(0);
+	private Joystick coDriver = new Joystick(1);
 	private Button coDriverA = new JoystickButton(coDriver, 0);
 	private Button coDriverB = new JoystickButton(coDriver, 1);
 	private Button coDriverX = new JoystickButton(coDriver, 2);
@@ -37,4 +38,7 @@ public class OI {
 	private Button coDriverRB = new JoystickButton(coDriver, 7);
 	private Button coDriverBack = new JoystickButton(coDriver, 8);
 	private Button coDriverStart = new JoystickButton(coDriver, 9);
+	
+	//MANUAL BOARD
+	private Joystick board = new Joystick(2);
 }
