@@ -3,6 +3,7 @@ package org.usfirst.frc.team340.robot.subsystems;
 import org.usfirst.frc.team340.robot.RobotMap;
 import org.usfirst.frc.team340.robot.commands.DriveXbox;
 
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -10,8 +11,18 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * Subsystem that controls the drive train
  */
 public class Drive extends Subsystem {
-    private static Talon leftDrive = new Talon(RobotMap.LEFT_DRIVE_PORT);
-    private static Talon rightDrive = new Talon(RobotMap.RIGHT_DRIVE_PORT);
+    private Solenoid solenoid;
+    private Talon leftDrive;
+    private Talon rightDrive;
+    
+    /**
+     * I'm being held against my will
+     */
+    public Drive() {
+	solenoid = new Solenoid(RobotMap.DROP_SOLENOID_CHANNEL);
+	leftDrive = new Talon(RobotMap.LEFT_DRIVE_PORT);
+	rightDrive = new Talon(RobotMap.RIGHT_DRIVE_PORT);
+    }
     
     /**
      * Set the default command
@@ -19,6 +30,22 @@ public class Drive extends Subsystem {
     @Override
     public void initDefaultCommand() {
         setDefaultCommand(new DriveXbox());
+    }
+    
+    /**
+     * Switch the value of the solenoid
+     */
+    public void toggleSolenoid() {
+    	solenoid.set(!solenoid.get());
+    }
+    
+    /**
+     * Set the value of the solenoid
+     * @param isDown true for the wheel
+     * down position and vice versa
+     */
+    public void setSolenoid(boolean isDown) {
+    	solenoid.set(isDown);
     }
     
     /**
