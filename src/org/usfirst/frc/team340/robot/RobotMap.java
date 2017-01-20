@@ -14,5 +14,4 @@ public class RobotMap {
     public static final int DROP_SOLENOID_CHANNEL = 2;
     public static final int ARM_SOLENOID_CHANNEL = 3;
     public static final int CLAW_SOLENOID_CHANNEL = 4;
-    public static final int KICKER_SOLENOID_CHANNEL = 4;
 }
