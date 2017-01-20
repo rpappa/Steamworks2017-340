@@ -1,7 +1,6 @@
 package org.usfirst.frc.team340.robot;
 
 import org.usfirst.frc.team340.robot.subsystems.Drive;
-import org.usfirst.frc.team340.robot.subsystems.PneumaticDrop;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -16,9 +15,8 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  * directory.
  */
 public class Robot extends IterativeRobot {
-    public static OI oi;
     public static Drive drive;
-    public static PneumaticDrop drop;
+    public static OI oi;
 
     Command autonomousCommand;
 //    SendableChooser<Command> chooser = new SendableChooser<>();
@@ -29,9 +27,8 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
-	    oi = new OI();
 	    drive = new Drive();
-	    drop = new PneumaticDrop();
+	    oi = new OI();
 	    // chooser.addObject("My Auto", new MyAutoCommand());
 //	    SmartDashboard.putData("Auto mode", chooser);
 	}
