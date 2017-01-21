@@ -35,7 +35,7 @@ public class Drive extends Subsystem {
     /**
      * Switch the value of the solenoid
      */
-    public void toggleSolenoid() {
+    public void toggleWheelsDown() {
     	drop.set(!drop.get());
     }
     
@@ -44,7 +44,7 @@ public class Drive extends Subsystem {
      * @param isDown true for the wheel
      * down position and vice versa
      */
-    public void setSolenoid(boolean isDown) {
+    public void setWheelsDown(boolean isDown) {
     	drop.set(isDown);
     }
     

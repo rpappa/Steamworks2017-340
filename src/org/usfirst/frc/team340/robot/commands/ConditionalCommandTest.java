@@ -8,16 +8,16 @@ import edu.wpi.first.wpilibj.command.ConditionalCommand;
 import edu.wpi.first.wpilibj.command.InstantCommand;
 
 public class ConditionalCommandTest extends ConditionalCommand {
-	public ConditionalCommandTest(Command onTrue) {
-		this(onTrue, new InstantCommand());
-	}
-	
-	public ConditionalCommandTest(Command onTrue, Command onFalse) {
-		super(onTrue, onFalse);
-	}
-	
-	@Override
-	protected boolean condition() {
-		return Robot.oi.getDriverAxis(Axis.DRIVER_LEFT_X) < 0;
-	}
+    public ConditionalCommandTest(Command onTrue) {
+	this(onTrue, new InstantCommand());
+    }
+    
+    public ConditionalCommandTest(Command onTrue, Command onFalse) {
+	super(onTrue, onFalse);
+    }
+    
+    @Override
+    protected boolean condition() {
+	return Robot.oi.getDriverAxis(Axis.DRIVER_LEFT_X) < 0;
+    }
 }

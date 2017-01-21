@@ -1,6 +1,8 @@
 package org.usfirst.frc.team340.robot;
 
-import org.usfirst.frc.team340.robot.commands.*;
+import org.usfirst.frc.team340.robot.commands.ClawClose;
+import org.usfirst.frc.team340.robot.commands.ConditionalCommandTest;
+import org.usfirst.frc.team340.robot.commands.ClawOpen;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -12,8 +14,6 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  */
 @SuppressWarnings("unused")
 public class OI {
-	
-	//TODO: enumerate correct integers
 	
 	//DRIVER
 	private Joystick driver = new Joystick(0);
@@ -45,8 +45,8 @@ public class OI {
 	private Joystick board = new Joystick(2);
 	
 	public OI() {
-	    driverA.whenPressed(new ConditionalCommandTest(new CloseClaw()));
-	    driverB.whenPressed(new ConditionalCommandTest(new CloseClaw(), new OpenClaw()));
+	    driverA.whenPressed(new ConditionalCommandTest(new ClawClose()));
+	    driverB.whenPressed(new ConditionalCommandTest(new ClawClose(), new ClawOpen()));
 	}
 	
 	public enum Axis {
