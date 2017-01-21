@@ -1,5 +1,7 @@
 package org.usfirst.frc.team340.robot;
 
+import org.usfirst.frc.team340.robot.commands.*;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -43,7 +45,8 @@ public class OI {
 	private Joystick board = new Joystick(2);
 	
 	public OI() {
-	    //Button-based commands
+	    driverA.whenPressed(new ConditionalCommandTest(new CloseClaw()));
+	    driverB.whenPressed(new ConditionalCommandTest(new CloseClaw(), new OpenClaw()));
 	}
 	
 	public enum Axis {
