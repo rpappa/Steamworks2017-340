@@ -4,9 +4,6 @@ import org.usfirst.frc.team340.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.InstantCommand;
 
-/**
- *
- */
 public class CloseClaw extends InstantCommand {
     public CloseClaw() {
         requires(Robot.claw);
