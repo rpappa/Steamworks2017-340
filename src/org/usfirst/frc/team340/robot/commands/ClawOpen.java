@@ -4,8 +4,8 @@ import org.usfirst.frc.team340.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.InstantCommand;
 
-public class OpenClaw extends InstantCommand {
-    public OpenClaw() {
+public class ClawOpen extends InstantCommand {
+    public ClawOpen() {
 	requires(Robot.claw);
     }
     
