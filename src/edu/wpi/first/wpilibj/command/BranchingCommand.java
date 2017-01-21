@@ -1,4 +1,4 @@
-package edu.wpi.forst.wpilibj.command;
+package edu.wpi.first.wpilibj.command;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.ConditionalCommand;
