@@ -1,5 +1,6 @@
 package org.usfirst.frc.team340.robot.commands;
 
+import org.usfirst.frc.team340.robot.OI.Axis;
 import org.usfirst.frc.team340.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -25,7 +26,7 @@ public class DriveXbox extends Command {
 
     @Override
     protected void execute() {
-    	//TODO: this
+    	Robot.drive.setBothDrive(Robot.oi.getDriverAxis(Axis.DRIVER_LEFT_Y), Robot.oi.getDriverAxis(Axis.DRIVER_RIGHT_Y));
     }
 
     @Override

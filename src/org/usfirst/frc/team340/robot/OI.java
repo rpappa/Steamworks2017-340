@@ -67,11 +67,18 @@ public class OI {
 	    }
 	}
 	
+	/**
+	 * Get the raw value of the any of
+	 * the co-driver's axes
+	 * @param axis the axis
+	 * @return the raw axis value, or 0 if
+	 * in the range [-.05 ~ .05]
+	 */
 	public double getDriverAxis(Axis axis) {
-	    return driver.getRawAxis(axis.getAxis());
+	    return (driver.getRawAxis(axis.getAxis()) < -.05 || driver.getRawAxis(axis.getAxis()) > .05) ? driver.getRawAxis(axis.getAxis()) : 0;
 	}
 	
 	public double getCoDriverAxis(Axis axis) {
-	    return coDriver.getRawAxis(axis.getAxis());
+	    return (coDriver.getRawAxis(axis.getAxis()) < -.05 || coDriver.getRawAxis(axis.getAxis()) > .05) ? coDriver.getRawAxis(axis.getAxis()) : 0;
 	}
 }

@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * Subsystem that controls the drive train
  */
 public class Drive extends Subsystem {
-    private Solenoid solenoid;
+    private Solenoid drop;
     private Talon leftDrive;
     private Talon rightDrive;
     
@@ -19,7 +19,7 @@ public class Drive extends Subsystem {
      * I'm being held against my will
      */
     public Drive() {
-	solenoid = new Solenoid(RobotMap.DROP_SOLENOID_CHANNEL);
+	drop = new Solenoid(RobotMap.DROP_SOLENOID_CHANNEL);
 	leftDrive = new Talon(RobotMap.LEFT_DRIVE_PORT);
 	rightDrive = new Talon(RobotMap.RIGHT_DRIVE_PORT);
     }
@@ -36,7 +36,7 @@ public class Drive extends Subsystem {
      * Switch the value of the solenoid
      */
     public void toggleSolenoid() {
-    	solenoid.set(!solenoid.get());
+    	drop.set(!drop.get());
     }
     
     /**
@@ -45,7 +45,7 @@ public class Drive extends Subsystem {
      * down position and vice versa
      */
     public void setSolenoid(boolean isDown) {
-    	solenoid.set(isDown);
+    	drop.set(isDown);
     }
     
     /**
