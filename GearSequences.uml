@@ -1,0 +1,86 @@
+@startuml
+
+''''' states
+ClawReferenceImage: <img:/Claw20170121_resized.JPG>
+idle : Natural idle state when\n no commands are running
+
+state HarvestGear {
+
+	safeModeWithoutGear : clawPos=GoUp
+	safeModeWithoutGear : armPos=GoClose
+	safeModeWithoutGear : pusherPos=GoRetract
+	safeModeWithoutGear : rollers=SpinStop
+	
+	harvestMode : clawPos=GoDown
+	harvestMode : armPos=GoOpen
+	harvestMode : pusherPos=GoRetract
+	harvestMode : rollers=SpinIn
+	
+	gearClamp : clawPos=GoDown
+	gearClamp : armPos=GoClose
+	gearClamp : pusherPos=GoRetract
+	gearClamp : rollers=SpinStop
+	
+	safeModeWithGear : clawPos=GoUp
+	safeModeWithGear : armPos=GoClose
+	safeModeWithGear : pusherPos=GoRetract
+	safeModeWithGear : rollers=SpinStop
+
+}
+
+state ScoreGear {
+
+	moveToPeg : visionTracking/squaringUp
+	
+	placeGear : clawPos=Up
+	placeGear : armPos=Open
+	placeGear : pusherPos=Extend
+	placeGear : rollers=Stop
+	
+	safeMode : clawPos=Up
+	safeMode : armPos=Close
+	safeMode : pusherPos=Retract
+	safeMode : rollers=Stop
+
+}
+
+state ReleaseGear {
+
+	readyToRelease : clawPos=Up
+	readyToRelease : armPos=Close
+	readyToRelease : pusherPos=Retract
+	readyToRelease : rollers=Stop
+
+	dropGear : clawPos=Up
+	dropGear : armPos=Open
+	dropGear : pusherPos=Extend
+	dropGear : rollers=Stop
+
+	safeModeResume : clawPos=Up
+	safeModeResume : armPos=Close
+	safeModeResume : pusherPos=Retract
+	safeModeResume : rollers=Stop
+
+}
+
+''''' transitions
+
+idle --> ScoreGear: Score Button Pressed
+idle --> HarvestGear: Harvest Button Pressed 
+idle -up-> ReleaseGear: Release Button Pressed
+
+safeModeWithoutGear -right-> harvestMode: doGearSequence
+
+harvestMode -right-> gearClamp: whenGearIsAccquired
+
+gearClamp -right-> safeModeWithGear: timeDelay
+
+moveToPeg -right-> placeGear: doPlaceGearSequence
+
+placeGear -right-> safeMode: whenGearNotPresent
+
+readyToRelease -right-> dropGear: doDropGearSequence
+
+dropGear -right-> safeModeResume: whenGearNotPresent
+
+@enduml
