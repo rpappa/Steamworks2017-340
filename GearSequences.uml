@@ -21,10 +21,10 @@ state HarvestGear {
 	gearClamp : pusherPos=GoRetract
 	gearClamp : rollers=SpinStop
 	
-	safeModeWithGear : clawPos=GoUp
-	safeModeWithGear : armPos=GoClose
-	safeModeWithGear : pusherPos=GoRetract
-	safeModeWithGear : rollers=SpinStop
+	raisingClaw : clawPos=GoUp
+	raisingClaw : armPos=GoClose
+	raisingClaw : pusherPos=GoRetract
+	raisingClaw : rollers=SpinStop
 
 }
 
@@ -73,14 +73,18 @@ safeModeWithoutGear -right-> harvestMode: doGearSequence
 
 harvestMode -right-> gearClamp: whenGearIsAccquired
 
-gearClamp -right-> safeModeWithGear: timeDelay
+harvestMode -up-> GettingToSafeMode: doGearReset
+
+gearClamp -left-> harvestMode: whenGearIsNotAccquired
+
+gearClamp -right-> raisingClaw: timeDelay &\n whenGearIsAccquired
 
 moveToPeg -right-> placeGear: doPlaceGearSequence
 
-placeGear -right-> safeMode: whenGearNotPresent
+placeGear -right-> safeMode: whenGearIsNotAccquired
 
 readyToRelease -right-> dropGear: doDropGearSequence
 
-dropGear -right-> safeModeResume: whenGearNotPresent
+dropGear -right-> safeModeResume: whenGearIsNotAccquired
 
 @enduml
