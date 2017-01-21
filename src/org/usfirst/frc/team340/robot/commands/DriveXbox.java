@@ -38,9 +38,4 @@ public class DriveXbox extends Command {
     protected void end() {
     	Robot.drive.setBothDrive(0);
     }
-
-    @Override
-    protected void interrupted() {
-    	end();
-    }
 }

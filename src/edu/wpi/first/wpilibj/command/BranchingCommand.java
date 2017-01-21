@@ -36,19 +36,8 @@ public abstract class BranchingCommand extends Command {
     private ConditionalCommand next;
     
     /**
-     * Create a new {@link BranchingCommand} and
-     * define the {@link ConditionalCommand} to
-     * be run afterwards
-     * @param cmd the {@link ConditionalCommand}
-     * to run after this
-     */
-    public BranchingCommand(ConditionalCommand cmd) {
-	setNextCommand(cmd);
-    }
-	
-    /**
      * This will create a new BranchCommand that 
-     * is simply a pass through and to support 
+     * is simply a pass-through and to support 
      * leaf nodes in our branching.
      */
     public BranchingCommand(){
@@ -61,10 +50,17 @@ public abstract class BranchingCommand extends Command {
 	});
     }
     
-    private void setNextCommand(ConditionalCommand next) {
-	this.next = next;
+    /**
+     * Create a new {@link BranchingCommand} and
+     * define the {@link ConditionalCommand} to
+     * be run afterwards
+     * @param cmd the {@link ConditionalCommand}
+     * to run after this
+     */
+    public BranchingCommand(ConditionalCommand cmd) {
+	setNextCommand(cmd);
     }
-	
+    
     /**
      * The replacement for {@link Command#end()}
      * for derivative use. This is where you may want to wrap up
@@ -73,6 +69,10 @@ public abstract class BranchingCommand extends Command {
      * Yes, I <em>did</em> just steal that from {@link Command#end()}
      */
     protected abstract void preEnd();
+    
+    private void setNextCommand(ConditionalCommand cmd) {
+	next = cmd;
+    }
     
     /**
      * Called when the command ended peacefully. This is never

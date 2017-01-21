@@ -13,8 +13,6 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 @SuppressWarnings("unused")
 public class OI {
 	
-	//TODO: enumerate correct integers
-	
 	//DRIVER
 	private Joystick driver = new Joystick(0);
 	private Button driverA = new JoystickButton(driver, 1);
