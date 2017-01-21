@@ -6,10 +6,9 @@ import edu.wpi.first.wpilibj.command.InstantCommand;
 
 /**
  * <h1><em>BranchingCommand</em></h1><br>
- * The meaning of this class is to create a
- * {@link Command} that can be branched out into two
- * possible outputs for the next {@link Command} to
- * be run.<br>
+ * This class creates a {@link Command} that can be
+ * branched out into two possible commands for the next
+ * {@link Command} to be run.<br>
  * This type of {@link Command} functions exactly like
  * any other, with some extra little bits added on.
  * Specifically, it will automatically call the
@@ -32,23 +31,13 @@ public abstract class BranchingCommand extends Command {
 	private ConditionalCommand next;
 	
 	/**
-	 * Create a new {@link BranchingCommand} and
-	 * define the {@link ConditionalCommand} to
-	 * be run afterwards
-	 * @param cmd the {@link ConditionalCommand}
-	 * to run after this
-	 */
-	public BranchingCommand(ConditionalCommand cmd) {
-		this.setNextCommand(cmd);
-	}
-	
-	/**
 	 * This will create a new BranchCommand that 
-	 * is simply a pass through and to support 
+	 * is simply a pass-through and to support 
 	 * leaf nodes in our branching.
 	 */
-	public BranchingCommand(){
-		this.setNextCommand(new ConditionalCommand(new InstantCommand()) {
+	public BranchingCommand() {
+		this(new ConditionalCommand(new InstantCommand()) {
+			
 			@Override
 			protected boolean condition() {
 				return true;
@@ -56,8 +45,19 @@ public abstract class BranchingCommand extends Command {
 		});
 	}
 	
-	private void setNextCommand(ConditionalCommand next){
-		this.next = next;
+	/**
+	 * Create a new {@link BranchingCommand} and
+	 * define the {@link ConditionalCommand} to
+	 * be run afterwards
+	 * @param cmd the {@link ConditionalCommand}
+	 * to run after this
+	 */
+	public BranchingCommand(ConditionalCommand cmd) {
+		setNextCommand(cmd);
+	}
+	
+	private void setNextCommand(ConditionalCommand cmd) {
+		next = cmd;
 	}
 	/**
 	 * The replacement for {@link Command#end()}
