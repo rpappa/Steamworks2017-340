@@ -3,18 +3,21 @@ package org.usfirst.frc.team340.robot.subsystems;
 import org.usfirst.frc.team340.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Claw extends Subsystem {
-    private Solenoid arm;
-    private Solenoid claw;
+    private Solenoid hinge;
+    private Solenoid arms;
+    private Talon rollers;
     
     /**
      * He made me do it
      */
     public Claw() {
-	arm = new Solenoid(RobotMap.ARM_SOLENOID_CHANNEL);
-	claw = new Solenoid(RobotMap.CLAW_SOLENOID_CHANNEL);
+	hinge = new Solenoid(RobotMap.ARM_SOLENOID_CHANNEL);
+	arms = new Solenoid(RobotMap.CLAW_SOLENOID_CHANNEL);
+	rollers = new Talon(RobotMap.CLAW_ROLLERS_PORT);
     }
     
     public void initDefaultCommand() {
@@ -25,7 +28,7 @@ public class Claw extends Subsystem {
      * Switch the value of the arm's solenoid
      */
     public void toggleArm() {
-	arm.set(!arm.get());
+	hinge.set(!hinge.get());
     }
     
     /**
@@ -34,14 +37,14 @@ public class Claw extends Subsystem {
      * is lowered and vice versa
      */
     public void setArm(boolean isDown) {
-	arm.set(isDown);
+	hinge.set(isDown);
     }
     
     /**
      * Switch the value of the claw's solenoid
      */
     public void toggleClaw() {
-	claw.set(!claw.get());
+	arms.set(!arms.get());
     }
     
     /**
@@ -50,7 +53,16 @@ public class Claw extends Subsystem {
      * is lowered and vice versa
      */
     public void setClaw(boolean isDown) {
-	claw.set(isDown);
+	arms.set(isDown);
+    }
+    
+    public void setRollers(double speed) {
+	if(speed < -1) {
+	    speed = -1;
+	} else if(speed > 1) {
+	    speed = 1;
+	}
+	
+	rollers.set(speed);
     }
 }
-
