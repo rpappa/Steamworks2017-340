@@ -19,9 +19,9 @@ public class Drive extends Subsystem {
      * I'm being held against my will
      */
     public Drive() {
-	drop = new Solenoid(RobotMap.DROP_SOLENOID_CHANNEL);
-	leftDrive = new Talon(RobotMap.LEFT_DRIVE_PORT);
-	rightDrive = new Talon(RobotMap.RIGHT_DRIVE_PORT);
+		drop = new Solenoid(RobotMap.DROP_SOLENOID_CHANNEL);
+		leftDrive = new Talon(RobotMap.LEFT_DRIVE_PORT);
+		rightDrive = new Talon(RobotMap.RIGHT_DRIVE_PORT);
     }
     
     /**
