@@ -1,6 +1,6 @@
 package org.usfirst.frc.team340.robot;
 
-import org.usfirst.frc.team340.robot.commands.*;
+import org.usfirst.frc.team340.robot.commands.ConditionalCommandTest;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -43,19 +43,15 @@ public class OI {
 	private Joystick board = new Joystick(2);
 	
 	public OI() {
-	    driverA.whenPressed(new ConditionalCommandTest(new CloseClaw()));
-	    driverB.whenPressed(new ConditionalCommandTest(new CloseClaw(), new OpenClaw()));
+//	    driverA.whenPressed(new ConditionalCommandTest(new ClawClose()));
+//	    driverB.whenPressed(new ConditionalCommandTest(new ClawClose(), new ClawOpen()));
 	}
 	
 	public enum Axis {
-	    DRIVER_LEFT_X(0),
-	    DRIVER_LEFT_Y(1),
-	    DRIVER_RIGHT_X(2),
-	    DRIVER_RIGHT_Y(3),
-	    CODRIVER_LEFT_X(0),
-	    CODRIVER_LEFT_Y(1),
-	    CODRIVER_RIGHT_X(2),
-	    CODRIVER_RIGHT_Y(3);
+	    LEFT_X(0),
+	    LEFT_Y(1),
+	    RIGHT_X(2),
+	    RIGHT_Y(3);
 	    
 	    private int axis;
 	    

@@ -9,7 +9,8 @@ import edu.wpi.first.wpilibj.command.Command;
  * Command for driving with Xbox 360 controller
  */
 public class DriveXbox extends Command {
-
+	private final double moveSlowScale = 0.6;
+	private final double turnSlowScale = 0.7;
     /**
      * Constructs a new instance of
      * {@link DriveXbox}, and all it does
@@ -26,7 +27,17 @@ public class DriveXbox extends Command {
 
     @Override
     protected void execute() {
-    	Robot.drive.setBothDrive(Robot.oi.getDriverAxis(Axis.DRIVER_LEFT_Y), Robot.oi.getDriverAxis(Axis.DRIVER_RIGHT_Y));
+    	if(Math.abs(Robot.oi.getDriverAxis(Axis.LEFT_X)) > 0.1 || //At least 10% away from center of left X
+    			Math.abs(Robot.oi.getDriverAxis(Axis.LEFT_Y)) > 0.1) { //At least 10% away from center of left Y
+    			Robot.drive.arcadeDrive(Robot.oi.getDriverAxis(Axis.LEFT_Y), //Movement speed
+    					Robot.oi.getDriverAxis(Axis.LEFT_X)); //Rotation speed
+    	} else if(Math.abs(Robot.oi.getDriverAxis(Axis.RIGHT_X)) > 0.1 || //At least 10% away from center of right X
+    			Math.abs(Robot.oi.getDriverAxis(Axis.RIGHT_Y)) > 0.1) { //At least 10% away from center of right Y
+    			Robot.drive.arcadeDrive(Robot.oi.getDriverAxis(Axis.RIGHT_Y) * moveSlowScale,  //Move speed (slowed)
+    					Robot.oi.getDriverAxis(Axis.RIGHT_X) * turnSlowScale); //Rotation speed (slowed) 
+    	}
+    	
+    	//Robot.drive.setBothDrive(Robot.oi.getDriverAxis(Axis.DRIVER_LEFT_Y), Robot.oi.getDriverAxis(Axis.DRIVER_RIGHT_Y)); //Tank drive
     }
 
     @Override
