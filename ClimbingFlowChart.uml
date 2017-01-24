@@ -19,12 +19,12 @@ stopClimb: climbMotors= goStopped
 
 ''''transitions
 
-readyToClimb -right-> climbMotorsOn: doClimbSequence
+readyToClimb -down-> climbMotorsOn: doClimbSequence
 
-climbMotorsOn -right-> driveIntoRope: timeDelay= 0.5
+climbMotorsOn -down-> driveIntoRope: timeDelay= 0.5
 
-driveIntoRope -right-> climb: climbMotors=isEngagedWithRope
+driveIntoRope -down-> climb: climbMotors=isEngagedWithRope
 
-climb -right-> stopClimb: climbMotors=isEngagedWithTouchPad
+climb -down-> stopClimb: climbMotors=isEngagedWithTouchPad
 
 @enduml
