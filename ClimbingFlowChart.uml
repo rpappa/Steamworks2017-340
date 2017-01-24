@@ -1,0 +1,30 @@
+@startuml
+
+''''states
+
+readyToClimb: driveMotors=humanControl
+readyToClimb: climbMotors=goStop
+
+climbMotorsOn: driveMotors=humanControl
+climbMotorsOn: climbMotors=goAtEngageSpeed
+ 
+driveIntoRope: driveMotors=humanControl
+driveIntoRope: climbMotors=goAtEngageSpeed 
+
+climb: driveMotors= goStop
+climb: climbMotors= goAtClimbSpeed
+
+stopClimb: driveMotors= goStop
+stopClimb: climbMotors= goStopped
+
+''''transitions
+
+readyToClimb -right-> climbMotorsOn: doClimbSequence
+
+climbMotorsOn -right-> driveIntoRope: timeDelay= 0.5
+
+driveIntoRope -right-> climb: climbMotors=isEngagedWithRope
+
+climb -right-> stopClimb: climbMotors=isEngagedWithTouchPad
+
+@enduml
