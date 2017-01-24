@@ -50,14 +50,10 @@ public class OI {
 	}
 	
 	public enum Axis {
-	    DRIVER_LEFT_X(0),
-	    DRIVER_LEFT_Y(1),
-	    DRIVER_RIGHT_X(2),
-	    DRIVER_RIGHT_Y(3),
-	    CODRIVER_LEFT_X(0),
-	    CODRIVER_LEFT_Y(1),
-	    CODRIVER_RIGHT_X(2),
-	    CODRIVER_RIGHT_Y(3);
+	    LEFT_X(0),
+	    LEFT_Y(1),
+	    RIGHT_X(2),
+	    RIGHT_Y(3);
 	    
 	    private int axis;
 	    

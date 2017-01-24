@@ -18,6 +18,6 @@ public class ConditionalCommandTest extends ConditionalCommand {
     
     @Override
     protected boolean condition() {
-	return Robot.oi.getDriverAxis(Axis.DRIVER_LEFT_X) < 0;
+	return Robot.oi.getDriverAxis(Axis.LEFT_X) < 0;
     }
 }

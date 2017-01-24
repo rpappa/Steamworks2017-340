@@ -11,6 +11,11 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * Subsystem that controls the drive train
  */
 public class Drive extends Subsystem {
+	
+	//Because we steal our own code :P
+	private double leftMotorSpeed = 0;
+    private double rightMotorSpeed = 0;
+    
     private Solenoid drop;
     private Talon leftDrive;
     private Talon rightDrive;
@@ -99,4 +104,37 @@ public class Drive extends Subsystem {
     	setLeftDrive(lSpeed);
     	setRightDrive(rSpeed);
     }
+    
+    /**
+	 * One joystick drive mode.
+u	 * 
+	 * @param moveValue
+	 * @param rotateValue
+	 */
+	public void arcadeDrive(double moveValue, double rotateValue) {
+		
+		if (moveValue > 0.0) {
+
+			if (rotateValue > 0.0) {
+				leftMotorSpeed = moveValue - rotateValue;
+				rightMotorSpeed = Math.max(moveValue, rotateValue);
+			}
+
+			else {
+				leftMotorSpeed = Math.max(moveValue, -rotateValue);
+				rightMotorSpeed = moveValue + rotateValue;
+			}
+		}
+
+		else {
+			if (rotateValue > 0.0) {
+				leftMotorSpeed = -Math.max(-moveValue, rotateValue);
+				rightMotorSpeed = moveValue + rotateValue;
+			} else {
+				leftMotorSpeed = moveValue - rotateValue;
+				rightMotorSpeed = -Math.max(-moveValue, -rotateValue);
+			}
+		}
+		setBothDrive(leftMotorSpeed, rightMotorSpeed);
+	}
 }
