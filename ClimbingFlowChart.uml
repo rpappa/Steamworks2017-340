@@ -2,20 +2,20 @@
 
 ''''states
 
-readyToClimb: driveMotors=humanControl
+readyToClimb: "driveMotors=humanControl"
 readyToClimb: climbMotors=goStop
 
 climbMotorsOn: driveMotors=humanControl
-climbMotorsOn: climbMotors=goAtEngageSpeed
+climbMotorsOn: climbMotors= <b>goAtEngageSpeed
  
 driveIntoRope: driveMotors=humanControl
 driveIntoRope: climbMotors=goAtEngageSpeed 
 
-climb: driveMotors= goStop
-climb: climbMotors= goAtClimbSpeed
+climb: driveMotors= <b>goStop
+climb: climbMotors= <b>goAtClimbSpeed
 
 stopClimb: driveMotors= goStop
-stopClimb: climbMotors= goStopped
+stopClimb: climbMotors= <b>goStopped
 
 ''''transitions
 
