@@ -49,11 +49,11 @@ public class Claw extends Subsystem {
     
     /**
      * Set the value of the claw's solenoid
-     * @param isDown true if the claw
+     * @param isClosed true if the claw
      * is lowered and vice versa
      */
-    public void setClaw(boolean isDown) {
-	arms.set(isDown);
+    public void setClaw(boolean isClosed) {
+	arms.set(isClosed);
     }
     
     public void setRollers(double speed) {

@@ -1,4 +1,4 @@
-package edu.wpi.first.wpilibj.command;
+package org.usfirst.frc.team340.robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.ConditionalCommand;
@@ -66,7 +66,9 @@ public abstract class BranchingCommand extends Command {
 	 * in the command.<br>
 	 * Yes, I <em>did</em> just steal that from {@link Command#end()}
 	 */
-	protected abstract void preEnd();
+	protected void preEnd() {
+		
+	}
 	
 	/**
 	 * Called when the command ended peacefully. This is never

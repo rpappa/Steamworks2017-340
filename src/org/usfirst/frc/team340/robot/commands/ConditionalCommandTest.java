@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.InstantCommand;
 
 public class ConditionalCommandTest extends ConditionalCommand {
     public ConditionalCommandTest(Command onTrue) {
-	this(onTrue, new InstantCommand());
+    	this(onTrue, new InstantCommand());
     }
     
     public ConditionalCommandTest(Command onTrue, Command onFalse) {
@@ -18,6 +18,6 @@ public class ConditionalCommandTest extends ConditionalCommand {
     
     @Override
     protected boolean condition() {
-	return Robot.oi.getDriverAxis(Axis.LEFT_X) < 0;
+    	return Robot.oi.getDriverAxis(Axis.LEFT_X) < 0;
     }
 }
