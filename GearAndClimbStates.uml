@@ -7,22 +7,22 @@ idle : Natural idle state when\n no commands are running
 ClawReferenceImage: <img:/Claw20170121_resized.JPG>
 ClimberReferenceImage: <img:/Climber_resized.JPG>
 
-state Climb {
+state Climbing {
 
 readyToClimb: "driveMotors=humanControl"
-readyToClimb: climbMotors=goStop
+readyToClimb: ClimbMotors=goStop
 
-climbMotorsOn: driveMotors=humanControl
-climbMotorsOn: climbMotors= <b>goAtEngageSpeed
+ClimbMotorsOn: driveMotors=humanControl
+ClimbMotorsOn: ClimbMotors= <b>goAtEngageSpeed
  
-driveIntoRope: driveMotors=humanControl
-driveIntoRope: climbMotors=goAtEngageSpeed 
+DriveIntoRope: driveMotors=humanControl
+DriveIntoRope: ClimbMotors=goAtEngageSpeed 
 
-climb: driveMotors= <b>goStop
-climb: climbMotors= <b>goAtClimbSpeed
+Climb: driveMotors= <b>goStop
+Climb: ClimbMotors= <b>goAtClimbSpeed
 
 stopClimb: driveMotors= goStop
-stopClimb: climbMotors= <b>goStopped
+stopClimb: ClimbMotors= <b>goStopped
 
 }
 
@@ -33,46 +33,46 @@ state HarvestGear {
 	safeModeWithoutGear : pusherPos=GoRetract
 	safeModeWithoutGear : rollers=SpinStop
 	
-	harvestMode : <b>clawPos=GoDown
-	harvestMode : <b>armPos=GoOpen
-	harvestMode : pusherPos=GoRetract
-	harvestMode : <b>rollers=SpinIn
+	HarvestMode : <b>clawPos=GoDown
+	HarvestMode : <b>armPos=GoOpen
+	HarvestMode : pusherPos=GoRetract
+	HarvestMode : <b>rollers=SpinIn
 	
-	gearClamp : clawPos=GoDown
-	gearClamp : <b>armPos=GoClose
-	gearClamp : pusherPos=GoRetract
-	gearClamp : <b>rollers=SpinStop
+	GearClamp : clawPos=GoDown
+	GearClamp : <b>armPos=GoClose
+	GearClamp : pusherPos=GoRetract
+	GearClamp : <b>rollers=SpinStop
 	
-	raisingClaw : <b>clawPos=GoUp
-	raisingClaw : armPos=GoClose
-	raisingClaw : pusherPos=GoRetract
-	raisingClaw : rollers=SpinStop
+	RaisingClaw : <b>clawPos=GoUp
+	RaisingClaw : armPos=GoClose
+	RaisingClaw : pusherPos=GoRetract
+	RaisingClaw : rollers=SpinStop
 	
 	safeModeWithGear : clawPos=GoUp
 	safeModeWithGear : armPos=GoClose
 	safeModeWithGear : pusherPos=GoRetract
 	safeModeWithGear : rollers=SpinStop
 	
-	abortRaisingClaw : <b>clawPos=GoDown
-	abortRaisingClaw : armPos=GoClose
-	abortRaisingClaw : pusherPos=GoRetract
-	abortRaisingClaw : rollers=SpinStop
+	AbortRaisingClaw : <b>clawPos=GoDown
+	AbortRaisingClaw : armPos=GoClose
+	AbortRaisingClaw : pusherPos=GoRetract
+	AbortRaisingClaw : rollers=SpinStop
 
 }
 
 state ScoreGear {
 
-	moveToPeg : visionTracking/squaringUp
+	MoveToPeg : visionTracking/squaringUp
 	
-	placeGear : clawPos=GoUp
-	placeGear : armPos=GoOpen
-	placeGear : pusherPos=GoExtend
-	placeGear : rollers=SpinStop
+	PlaceGear : clawPos=GoUp
+	PlaceGear : armPos=GoOpen
+	PlaceGear : pusherPos=GoExtend
+	PlaceGear : rollers=SpinStop
 	
-	returnToStart : clawPos=GoUp
-	returnToStart : armPos=GoOpen
-	returnToStart : <b>pusherPos=GoRetract
-	returnToStart : rollers=SpinStop
+	ReturnToStart : clawPos=GoUp
+	ReturnToStart : armPos=GoOpen
+	ReturnToStart : <b>pusherPos=GoRetract
+	ReturnToStart : rollers=SpinStop
 	
 	gearScored : clawPos=GoUp
 	gearScored : armPos=GoOpen
@@ -88,20 +88,20 @@ state ReleaseGear {
 	unHarvest : pusherPos=GoRetract
 	unHarvest : rollers=SpinStop
 
-	readyToRelease : <b>clawPos=GoDown
-	readyToRelease : armPos=GoClose
-	readyToRelease : pusherPos=GoRetract
-	readyToRelease : rollers=SpinStop
+	ReadyToReleaseGear : <b>clawPos=GoDown
+	ReadyToReleaseGear : armPos=GoClose
+	ReadyToReleaseGear : pusherPos=GoRetract
+	ReadyToReleaseGear : rollers=SpinStop
 
-	regurgitateGear : clawPos=GoDown
-	regurgitateGear : <b>armPos=GoOpen
-	regurgitateGear : pusherPos=GoRetract
-	regurgitateGear : <b>rollers=SpinOut
+	RegurgitateGear : clawPos=GoDown
+	RegurgitateGear : <b>armPos=GoOpen
+	RegurgitateGear : pusherPos=GoRetract
+	RegurgitateGear : <b>rollers=SpinOut
 	
-	returnToPosition : <b>clawPos=GoUp
-	returnToPosition : <b>armPos=GoClose
-	returnToPosition : pusherPos=GoRetract
-	returnToPosition : <b>rollers=SpinStop
+	ReturnToPosition : <b>clawPos=GoUp
+	ReturnToPosition : <b>armPos=GoClose
+	ReturnToPosition : pusherPos=GoRetract
+	ReturnToPosition : <b>rollers=SpinStop
 
 	safeModeResume : clawPos=GoUp
 	safeModeResume : armPos=GoClose
@@ -115,45 +115,45 @@ state ReleaseGear {
 idle -left-> ScoreGear: Score Button Pressed
 idle -down-> HarvestGear: Harvest Button Pressed 
 idle -up-> ReleaseGear: Release Button Pressed
-idle -right-> Climb: Climb Button Pressed
+idle -right-> Climbing: Climb Button Pressed
 
-Climb -right-> ClimberReferenceImage
+Climbing -right-> ClimberReferenceImage
 ScoreGear -left-> ClawReferenceImage
 
-readyToClimb -down-> climbMotorsOn: doClimbSequence
+readyToClimb -down-> ClimbMotorsOn: doClimbSequence
 
-climbMotorsOn -down-> driveIntoRope: timeDelay= 0.5
+ClimbMotorsOn -down-> DriveIntoRope: timeDelay= 0.5
 
-driveIntoRope -down-> climb: climbMotors=isEngagedWithRope
+DriveIntoRope -down-> Climb: ClimbMotors=isEngagedWithRope
 
-climb -down-> stopClimb: climbMotors=isEngagedWithTouchPad
+Climb -down-> stopClimb: ClimbMotors=isEngagedWithTouchPad
 
-safeModeWithoutGear -right-> harvestMode: doGearSequence
+safeModeWithoutGear -right-> HarvestMode: doGearSequence
 
-harvestMode -right-> gearClamp: whenGearIsAccquired
+HarvestMode -right-> GearClamp: whenGearIsAccquired
 
-gearClamp -left-> harvestMode: whenGearIsNotAccquired
+GearClamp -left-> HarvestMode: whenGearIsNotAccquired
 
-gearClamp -right-> raisingClaw: timeDelay &\n whenGearIsAccquired
+GearClamp -right-> RaisingClaw: timeDelay &\n whenGearIsAccquired
 
-raisingClaw -down-> abortRaisingClaw: doAbort
+RaisingClaw -down-> AbortRaisingClaw: doAbort
 
-raisingClaw -right-> safeModeWithGear: clawPos=IsUp
+RaisingClaw -right-> safeModeWithGear: clawPos=IsUp
 
-moveToPeg -down-> placeGear: doPlaceGearSequence
+MoveToPeg -down-> PlaceGear: doPlaceGearSequence
 
-placeGear -down-> returnToStart: timeDelay &\n whenGearIsNotAccquired
+PlaceGear -down-> ReturnToStart: timeDelay &\n whenGearIsNotAccquired
 
-returnToStart -down-> gearScored: pusherPos=IsRetracted
+ReturnToStart -down-> gearScored: pusherPos=IsRetracted
 
-gearScored -down-> placeGear: retry?
+gearScored -down-> PlaceGear: retry?
 
-unHarvest -right-> readyToRelease: doDropGearSequence
+unHarvest -right-> ReadyToReleaseGear: doDropGearSequence
 
-readyToRelease -right-> regurgitateGear: clawPos=IsDown
+ReadyToReleaseGear -right-> RegurgitateGear: clawPos=IsDown
 
-regurgitateGear -right-> returnToPosition: timeDelay &\n whenGearIsNotAccquired
+RegurgitateGear -right-> ReturnToPosition: timeDelay &\n whenGearIsNotAccquired
 
-returnToPosition -right-> safeModeResume: clawPos=IsUp\n armPos=IsClosed\n rollers=IsStopped
+ReturnToPosition -right-> safeModeResume: clawPos=IsUp\n armPos=IsClosed\n rollers=IsStopped
 
 @enduml

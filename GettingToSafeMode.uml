@@ -1,0 +1,32 @@
+@startuml
+
+''''' states
+
+	state GettingToSafeMode {
+	
+	start : clawPos=?
+	start : armPos=?
+	start : pusherPos=?
+	start : rollers=?
+	
+	notReady : clawPos=GoUp
+	notReady : armPos=GoClose
+	notReady : pusherPos=GoRetract
+	notReady : rollers=SpinStop
+	
+	safeModeWithoutGear : clawPos=GoUp
+	safeModeWithoutGear : armPos=GoClose
+	safeModeWithoutGear : pusherPos=GoRetract
+	safeModeWithoutGear : rollers=SpinStop
+	
+}
+
+''''' transitions
+
+start --> safeModeWithoutGear: clawPos=IsUp\n armPos=IsClose\n pusherPos=IsRetracted\n rollers=IsStopped
+
+start -down-> notReady: clawPos!=IsUp ||\n armPos!=IsClosed ||\n pusherPos!=IsRetracted ||\n rollers!=IsStopped\n 
+
+notReady -right-> safeModeWithoutGear: clawPos=IsUp\n armPos=IsClose\n pusherPos=IsRetracted\n rollers=IsStopped
+
+@enduml

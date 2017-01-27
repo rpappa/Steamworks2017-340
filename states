@@ -1,0 +1,26 @@
+@startuml
+
+[*] --> readyToHarvest
+readyToHarvest --> [*]
+readyToHarvest : harvesting wheels are off
+readyToHarvest : harvesting arm is down and in
+readyToHarvest : harvesting grabber is open
+
+readyToHarvest -> waitingForHarvestState: doGearSequence\n harvDrive=On\n arm go out 
+
+waitingForHarvestState : harvesting wheels are on
+waitingForHarvestState : harvesting arm is down
+waitingForHarvestState : harvesting arm is out
+
+waitingForHarvestState -> waitingForGearInHarvester: wheelsAtSpeed=T
+
+waitingForGearInHarvester -> grabbingGear: gearInGrabber=T\n gearGrab=On
+
+grabbingGear -> gearIsGrabbed: gearInGrabber=T\n harvDrive=Off
+
+gearIsGrabbed -> raisingArm: gearInGrabber=T\n wheelsAtSpeed=F
+
+grabbingGear -> gearIsGrabbed: gearInGrabber=T\n harvDrive=Off
+
+gearIsGrabbed -> raisingArm: gearInGrabber=T\n wheelsAtSpeed=F
+@endum
