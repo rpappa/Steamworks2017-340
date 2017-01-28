@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class DriveXbox extends Command {
 	private final double moveSlowScale = 0.6;
 	private final double turnSlowScale = 0.7;
+	
     /**
      * Constructs a new instance of
      * {@link DriveXbox}, and all it does

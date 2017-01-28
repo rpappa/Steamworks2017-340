@@ -53,17 +53,14 @@ public abstract class BranchingCommand extends Command {
 	 * to run after this
 	 */
 	public BranchingCommand(ConditionalCommand cmd) {
-		setNextCommand(cmd);
-	}
-	
-	private void setNextCommand(ConditionalCommand cmd) {
 		next = cmd;
 	}
+	
 	/**
-	 * The replacement for {@link Command#end()}
-	 * for derivative use. This is where you may want to wrap up
-	 * loose ends, like shutting off a motor that was being used
-	 * in the command.<br>
+	 * The replacement for {@link Command#end()} for derivative
+	 * use. This is where you may want to wrap up loose ends,
+	 * like shutting off a motor that was being used in the
+	 * command.<br>
 	 * Yes, I <em>did</em> just steal that from {@link Command#end()}
 	 */
 	protected void preEnd() {
