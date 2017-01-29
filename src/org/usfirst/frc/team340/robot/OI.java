@@ -50,8 +50,8 @@ public class OI {
 	public enum Axis {
 	    LEFT_X(0),
 	    LEFT_Y(1),
-	    RIGHT_X(2),
-	    RIGHT_Y(3);
+	    RIGHT_X(4),
+	    RIGHT_Y(5);
 	    
 	    private int axis;
 	    
