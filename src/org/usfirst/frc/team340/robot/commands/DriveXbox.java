@@ -40,7 +40,7 @@ public class DriveXbox extends Command {
     		Robot.drive.arcadeDrive(0, 0);
     	}
     	
-    	//Robot.drive.setBothDrive(Robot.oi.getDriverAxis(Axis.DRIVER_LEFT_Y), Robot.oi.getDriverAxis(Axis.DRIVER_RIGHT_Y)); //Tank drive
+//    	Robot.drive.setBothDrive(Robot.oi.getDriverAxis(Axis.DRIVER_LEFT_Y), Robot.oi.getDriverAxis(Axis.DRIVER_RIGHT_Y)); //Tank drive
     }
 
     @Override

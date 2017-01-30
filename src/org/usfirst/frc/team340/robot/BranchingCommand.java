@@ -31,9 +31,9 @@ public abstract class BranchingCommand extends Command {
 	private ConditionalCommand next;
 	
 	/**
-	 * This will create a new BranchCommand that 
-	 * is simply a pass-through and to support 
-	 * leaf nodes in our branching.
+	 * This will create a new BranchingCommand that 
+	 * is simply a pass-through to support leaf nodes
+	 * when branching.
 	 */
 	public BranchingCommand() {
 		this(new ConditionalCommand(new InstantCommand()) {
@@ -60,12 +60,10 @@ public abstract class BranchingCommand extends Command {
 	 * The replacement for {@link Command#end()} for derivative
 	 * use. This is where you may want to wrap up loose ends,
 	 * like shutting off a motor that was being used in the
-	 * command.<br>
-	 * Yes, I <em>did</em> just steal that from {@link Command#end()}
+	 * command.
+	 * @see edu.wpi.first.wpilibj.command.Command#end()
 	 */
-	protected void preEnd() {
-		
-	}
+	protected void preEnd() {}
 	
 	/**
 	 * Called when the command ended peacefully. This is never

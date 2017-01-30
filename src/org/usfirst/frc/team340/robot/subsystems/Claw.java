@@ -12,7 +12,8 @@ public class Claw extends Subsystem {
     private Talon rollers;
     
     /**
-     * He made me do it
+     * Creates a new Claw and constructs the
+     * objects needed
      */
     public Claw() {
     	hinge = new Solenoid(RobotMap.ARM_SOLENOID_CHANNEL);
@@ -21,7 +22,7 @@ public class Claw extends Subsystem {
     }
     
     public void initDefaultCommand() {
-        //Nothing to see here, move along
+        //No default command
     }
     
     /**
