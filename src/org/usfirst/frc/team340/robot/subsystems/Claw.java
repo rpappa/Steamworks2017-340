@@ -12,23 +12,24 @@ public class Claw extends Subsystem {
     private Talon rollers;
     
     /**
-     * He made me do it
+     * Creates a new Claw and constructs the
+     * objects needed
      */
     public Claw() {
-	hinge = new Solenoid(RobotMap.ARM_SOLENOID_CHANNEL);
-	arms = new Solenoid(RobotMap.CLAW_SOLENOID_CHANNEL);
-	rollers = new Talon(RobotMap.CLAW_ROLLERS_PORT);
+    	hinge = new Solenoid(RobotMap.ARM_SOLENOID_CHANNEL);
+    	arms = new Solenoid(RobotMap.CLAW_SOLENOID_CHANNEL);
+    	rollers = new Talon(RobotMap.CLAW_ROLLERS_PORT);
     }
     
     public void initDefaultCommand() {
-        //Nothing to see here, move along
+        //No default command
     }
     
     /**
      * Switch the value of the arm's solenoid
      */
     public void toggleArm() {
-	hinge.set(!hinge.get());
+    	hinge.set(!hinge.get());
     }
     
     /**
@@ -37,14 +38,14 @@ public class Claw extends Subsystem {
      * is lowered and vice versa
      */
     public void setArm(boolean isDown) {
-	hinge.set(isDown);
+    	hinge.set(isDown);
     }
     
     /**
      * Switch the value of the claw's solenoid
      */
     public void toggleClaw() {
-	arms.set(!arms.get());
+    	arms.set(!arms.get());
     }
     
     /**
@@ -53,16 +54,16 @@ public class Claw extends Subsystem {
      * is lowered and vice versa
      */
     public void setClaw(boolean isClosed) {
-	arms.set(isClosed);
+    	arms.set(isClosed);
     }
     
     public void setRollers(double speed) {
-	if(speed < -1) {
-	    speed = -1;
-	} else if(speed > 1) {
-	    speed = 1;
-	}
+    	if(speed < -1) {
+    		speed = -1;
+    	} else if(speed > 1) {
+    		speed = 1;
+    	}
 	
-	rollers.set(speed);
+    	rollers.set(speed);
     }
 }

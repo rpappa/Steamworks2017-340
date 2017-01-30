@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
-@SuppressWarnings("unused")
+@SuppressWarnings({"deprecation", "unused"})
 public class OI {
 	
 	//DRIVER
@@ -47,21 +47,39 @@ public class OI {
 //	    driverB.whenPressed(new ConditionalCommandTest(new ClawClose(), new ClawOpen()));
 	}
 	
+	/**
+	 * Enumerates the raw numbers assigned to
+	 * the stick axes
+	 */
 	public enum Axis {
 	    LEFT_X(0),
 	    LEFT_Y(1),
-	    RIGHT_X(2),
-	    RIGHT_Y(3);
+	    LEFT_TRIGGER(2),
+	    RIGHT_TRIGGER(3),
+	    RIGHT_X(4),
+	    RIGHT_Y(5);
 	    
 	    private int axis;
 	    
 	    private Axis(int axis) {
-		this.axis = axis;
+	    	this.axis = axis;
 	    }
 	    
 	    public int getAxis() {
-		return axis;
+	    	return axis;
 	    }
+	}
+	
+	/**
+	 * Get the raw value of the any of
+	 * the driver's axes
+	 * @param axis the axis
+	 * @return the raw axis value, or 0 if
+	 * in the range [-.05, .05]
+	 * @see Axis
+	 */
+	public double getDriverAxis(Axis axis) {
+	    return (driver.getRawAxis(axis.getAxis()) < -.05 || driver.getRawAxis(axis.getAxis()) > .05) ? driver.getRawAxis(axis.getAxis()) : 0;
 	}
 	
 	/**
@@ -69,12 +87,9 @@ public class OI {
 	 * the co-driver's axes
 	 * @param axis the axis
 	 * @return the raw axis value, or 0 if
-	 * in the range [-.05 ~ .05]
+	 * in the range [-.05, .05]
+	 * @see Axis
 	 */
-	public double getDriverAxis(Axis axis) {
-	    return (driver.getRawAxis(axis.getAxis()) < -.05 || driver.getRawAxis(axis.getAxis()) > .05) ? driver.getRawAxis(axis.getAxis()) : 0;
-	}
-	
 	public double getCoDriverAxis(Axis axis) {
 	    return (coDriver.getRawAxis(axis.getAxis()) < -.05 || coDriver.getRawAxis(axis.getAxis()) > .05) ? coDriver.getRawAxis(axis.getAxis()) : 0;
 	}

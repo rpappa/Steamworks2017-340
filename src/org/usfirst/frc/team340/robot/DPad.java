@@ -13,8 +13,7 @@ public class DPad extends Button {
      * @param joy {@link Joystick} in
      * question
      * @param dir {@link Direction} enum
-     * to use (because memorizing numbers
-     * is hard)
+     * to use
      */
     public DPad(Joystick joy, Direction dir) {
     	this(joy, dir.getDirection());
@@ -33,16 +32,9 @@ public class DPad extends Button {
     }
     
     /**
-     * Gets whether or not the hat's angle
-     * is equal to the given angle
-     * @return true if the PoV hat is
-     * equal to the given angle, false
-     * otherwise
+     * Enumerates all of the eight possible
+     * directions for a d-pad
      */
-    public boolean get() {
-    	return joystick.getPOV() == direction;
-    }
-    	
     public enum Direction {
     	right(90),
     	upRight(45),
@@ -62,5 +54,16 @@ public class DPad extends Button {
     	public int getDirection() {
     	    return dir;
     	}
+    }
+    
+    /**
+     * Gets whether or not the hat's angle
+     * is equal to the given angle
+     * @return true if the PoV hat is
+     * equal to the given angle, false
+     * otherwise
+     */
+    public boolean get() {
+    	return joystick.getPOV() == direction;
     }
 }

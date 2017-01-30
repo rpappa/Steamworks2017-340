@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.ConditionalCommand;
 import edu.wpi.first.wpilibj.command.InstantCommand;
 
+@Deprecated
 public class ConditionalCommandTest extends ConditionalCommand {
     public ConditionalCommandTest(Command onTrue) {
     	this(onTrue, new InstantCommand());
