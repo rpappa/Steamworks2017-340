@@ -8,7 +8,7 @@ package org.usfirst.frc.team340.robot;
  */
 public class RobotMap {
     
-    //We'll correct these values come time ;)
+    //FIXME: talk to electrical about the correct numbers
     public static final int LEFT_DRIVE_PORT = 0;
     public static final int RIGHT_DRIVE_PORT = 1;
     public static final int CLAW_ROLLERS_PORT = 2;

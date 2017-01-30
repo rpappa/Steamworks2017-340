@@ -11,8 +11,6 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * Subsystem that controls the drive train
  */
 public class Drive extends Subsystem {
-	
-	//Because we steal our own code :P
 	private double leftMotorSpeed = 0;
     private double rightMotorSpeed = 0;
     
@@ -21,7 +19,9 @@ public class Drive extends Subsystem {
     private Talon rightDrive;
     
     /**
-     * I'm being held against my will
+     * Sets the variables for each of the
+     * drive base's objects to the necessary
+     * ports on the PDP
      */
     public Drive() {
 		drop = new Solenoid(RobotMap.DROP_SOLENOID_CHANNEL);
@@ -30,7 +30,8 @@ public class Drive extends Subsystem {
     }
     
     /**
-     * Set the default command
+     * Set the default command to
+     * driving via X360 controller
      */
     @Override
     public void initDefaultCommand() {

@@ -28,19 +28,19 @@ public class DriveXbox extends Command {
 
     @Override
     protected void execute() {
-    	if(Math.abs(Robot.oi.getDriverAxis(Axis.LEFT_X)) > 0.15 || //At least 10% away from center of left X
-    			Math.abs(Robot.oi.getDriverAxis(Axis.LEFT_Y)) > 0.15) { //At least 10% away from center of left Y
+    	if(Math.abs(Robot.oi.getDriverAxis(Axis.LEFT_X)) > 0.15 || //At least 15% away from center of left X
+    			Math.abs(Robot.oi.getDriverAxis(Axis.LEFT_Y)) > 0.15) { //At least 15% away from center of left Y
     			Robot.drive.arcadeDrive(Robot.oi.getDriverAxis(Axis.LEFT_Y), //Movement speed
     					Robot.oi.getDriverAxis(Axis.LEFT_X)); //Rotation speed
-    	} else if(Math.abs(Robot.oi.getDriverAxis(Axis.RIGHT_X)) > 0.15 || //At least 10% away from center of right X
-    			Math.abs(Robot.oi.getDriverAxis(Axis.RIGHT_Y)) > 0.15) { //At least 10% away from center of right Y
+    	} else if(Math.abs(Robot.oi.getDriverAxis(Axis.RIGHT_X)) > 0.15 || //At least 15% away from center of right X
+    			Math.abs(Robot.oi.getDriverAxis(Axis.RIGHT_Y)) > 0.15) { //At least 15% away from center of right Y
     			Robot.drive.arcadeDrive(Robot.oi.getDriverAxis(Axis.RIGHT_Y) * moveSlowScale,  //Move speed (slowed)
     					Robot.oi.getDriverAxis(Axis.RIGHT_X) * turnSlowScale); //Rotation speed (slowed) 
     	} else {
     		Robot.drive.arcadeDrive(0, 0);
     	}
     	
-    	//Robot.drive.setBothDrive(Robot.oi.getDriverAxis(Axis.DRIVER_LEFT_Y), Robot.oi.getDriverAxis(Axis.DRIVER_RIGHT_Y)); //Tank drive
+//    	Robot.drive.setBothDrive(Robot.oi.getDriverAxis(Axis.DRIVER_LEFT_Y), Robot.oi.getDriverAxis(Axis.DRIVER_RIGHT_Y)); //Tank drive
     }
 
     @Override
