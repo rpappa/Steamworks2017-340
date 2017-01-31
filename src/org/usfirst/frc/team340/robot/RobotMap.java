@@ -15,6 +15,7 @@ public class RobotMap {
     public static final int DROP_SOLENOID_CHANNEL = 3;
     public static final int ARM_SOLENOID_CHANNEL = 4;
     public static final int CLAW_SOLENOID_CHANNEL = 5;
-	public static final double CLIMB_MOTORS_ENGAGEMENT_SPIN_UP_TIME = 0.5;
+    public static final int CLIMBER_DRUM_PORT = 6;
     
+	public static final double CLIMB_MOTORS_ENGAGEMENT_SPIN_UP_TIME = 0.5;
 }
