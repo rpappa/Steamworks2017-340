@@ -133,4 +133,9 @@ u	 *
 		
 		setBothDrive(leftMotorSpeed, rightMotorSpeed);
 	}
+
+	public void goStop() {
+		// TODO Auto-generated method stub
+		
+	}
 }
