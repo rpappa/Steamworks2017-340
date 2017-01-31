@@ -1,69 +1,89 @@
 package org.usfirst.frc.team340.robot.subsystems;
 
-import org.usfirst.frc.team340.robot.RobotMap;
-
-import edu.wpi.first.wpilibj.Solenoid;
-import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
+/**
+ *
+ */
 public class Claw extends Subsystem {
-    private Solenoid hinge;
-    private Solenoid arms;
-    private Talon rollers;
-    
-    /**
-     * Creates a new Claw and constructs the
-     * objects needed
-     */
-    public Claw() {
-    	hinge = new Solenoid(RobotMap.ARM_SOLENOID_CHANNEL);
-    	arms = new Solenoid(RobotMap.CLAW_SOLENOID_CHANNEL);
-    	rollers = new Talon(RobotMap.CLAW_ROLLERS_PORT);
-    }
-    
-    public void initDefaultCommand() {
-        //No default command
-    }
-    
-    /**
-     * Switch the value of the arm's solenoid
-     */
-    public void toggleArm() {
-    	hinge.set(!hinge.get());
-    }
-    
-    /**
-     * Set the value of the arm's solenoid
-     * @param isDown true if the arm
-     * is lowered and vice versa
-     */
-    public void setArm(boolean isDown) {
-    	hinge.set(isDown);
-    }
-    
-    /**
-     * Switch the value of the claw's solenoid
-     */
-    public void toggleClaw() {
-    	arms.set(!arms.get());
-    }
-    
-    /**
-     * Set the value of the claw's solenoid
-     * @param isClosed true if the claw
-     * is lowered and vice versa
-     */
-    public void setClaw(boolean isClosed) {
-    	arms.set(isClosed);
-    }
-    
-    public void setRollers(double speed) {
-    	if(speed < -1) {
-    		speed = -1;
-    	} else if(speed > 1) {
-    		speed = 1;
-    	}
+
+    // Put methods for controlling this subsystem
+    // here. Call these from Commands.
+	public void goUp(){
+		
+	}
+
+	public boolean isUp(){
+		return false;
+	}
 	
-    	rollers.set(speed);
+	public void goDown(){
+		
+	}
+	
+	public boolean isDown(){
+		return false;
+	}
+	
+	public void goOpen(){
+		
+	}
+	
+	public boolean isOpened(){
+		return false;
+	}
+	
+	public void goClose(){
+		
+	}
+	
+	public boolean isClosed(){
+		return false;
+	}
+	
+	public void goRetract(){
+		
+	}
+	
+	public boolean isRetracted(){
+		return false;
+	}
+	
+	public void goExtend(){
+		
+	}
+	
+	public boolean isExtended(){
+		return false;
+	}
+	
+	public void spinStop(){
+		
+	}
+	
+	public boolean isStopped(){
+		return false;
+	}
+	
+	public void spinIn(){
+		
+	}
+	
+	public boolean whenGearIsAcquired(){
+		return false;
+	}
+	
+	public void spinOut(){
+		
+	}
+	
+	public boolean whenGearIsNotAcquired(){
+		return false;
+	}
+	
+    public void initDefaultCommand() {
+        // Set the default command for a subsystem here.
+        //setDefaultCommand(new MySpecialCommand());
     }
 }
+

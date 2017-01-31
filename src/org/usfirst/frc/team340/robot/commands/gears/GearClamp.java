@@ -1,19 +1,30 @@
 package org.usfirst.frc.team340.robot.commands.gears;
 
+import org.usfirst.frc.team340.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * The claw is in the downward position and the arm will close on the gear.
+ * The pusher is still retracted.
+ * The rollers will stop spinning.
+ * 
+ * The command ends after a time delay and a sensor reads that the gear is still acquired.
  */
 public class GearClamp extends Command {
 
     public GearClamp() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(Robot.claw);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.claw.goClose();
+    	Robot.claw.spinStop();
+    	Robot.claw.goRetract();
+    	Robot.claw.goDown();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -22,7 +33,7 @@ public class GearClamp extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return Robot.claw.whenGearIsAcquired();
     }
 
     // Called once after isFinished returns true

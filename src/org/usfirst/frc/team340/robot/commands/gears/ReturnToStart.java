@@ -1,19 +1,30 @@
 package org.usfirst.frc.team340.robot.commands.gears;
 
+import org.usfirst.frc.team340.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * The claw is still in the upwards position and the arm remains open.
+ * The pusher retracts back into the claw.
+ * The rollers are still stopped.
+ * 
+ * The command ends when the pusher has finished retracting.
  */
 public class ReturnToStart extends Command {
 
     public ReturnToStart() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(Robot.claw);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.claw.goRetract();
+    	Robot.claw.goUp();
+    	Robot.claw.goOpen();
+    	Robot.claw.spinStop();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -22,7 +33,7 @@ public class ReturnToStart extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return Robot.claw.isRetracted();
     }
 
     // Called once after isFinished returns true
