@@ -21,6 +21,7 @@ public class HarvestMode extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	System.out.println("initialize HarvestMode");
     	Robot.claw.goDown();
     	Robot.claw.goOpen();
     	Robot.claw.spinIn();
@@ -38,6 +39,7 @@ public class HarvestMode extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	System.out.println("end HarvestMode");
     }
 
     // Called when another command which requires one or more of the same

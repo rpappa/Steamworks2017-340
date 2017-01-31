@@ -17,6 +17,7 @@ public class AbortRelease extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	System.out.println("initialize AbortRelease");
     	Robot.claw.goUp();
     	Robot.claw.goClose();
     	Robot.claw.goRetract();
@@ -34,6 +35,7 @@ public class AbortRelease extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	System.out.println("end AbortRelease");
     }
 
     // Called when another command which requires one or more of the same
