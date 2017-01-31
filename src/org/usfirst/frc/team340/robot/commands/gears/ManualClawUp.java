@@ -5,25 +5,19 @@ import org.usfirst.frc.team340.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- * The claw is in the downward position and the arm is opening.
- * The pusher stays retracted in the claw.
- * The rollers begin to spin out in order to remove the gear.
- * 
- * The command ends after a time delay and when a sensor has read that the 
- * gear is no longer acquired.
+ *
  */
-public class RegurgitateGear extends Command {
+public class ManualClawUp extends Command {
 
-    public RegurgitateGear() {
+    public ManualClawUp() {
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
     	requires(Robot.claw);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.claw.goOpen();
-    	Robot.claw.spinOut();
-    	Robot.claw.goDown();
-    	Robot.claw.goRetract();
+    	Robot.claw.goUp();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -32,7 +26,7 @@ public class RegurgitateGear extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.claw.whenGearIsNotAcquired();
+        return Robot.claw.isUp();
     }
 
     // Called once after isFinished returns true
