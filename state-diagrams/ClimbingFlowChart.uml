@@ -2,6 +2,10 @@
 
 ''''states
 
+ClimberReferenceImage: <img:/Climber_resized.JPG>
+
+state Climb {
+
 readyToClimb: "driveMotors=humanControl"
 readyToClimb: climbMotors=goStop
 
@@ -16,6 +20,8 @@ climb: climbMotors= <b>goAtClimbSpeed
 
 stopClimb: driveMotors= goStop
 stopClimb: climbMotors= <b>goStopped
+
+}
 
 ''''transitions
 
