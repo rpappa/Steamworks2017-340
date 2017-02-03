@@ -1,10 +1,23 @@
 package org.usfirst.frc.team340.robot;
 
 import org.usfirst.frc.team340.robot.commands.ConditionalCommandTest;
+import org.usfirst.frc.team340.robot.commands.climb.ManualClimberGoAtEngagementSpeed;
+import org.usfirst.frc.team340.robot.commands.climb.ManualClimberGoStopped;
+import org.usfirst.frc.team340.robot.commands.climb.ManualGoAtClimbSpeed;
+import org.usfirst.frc.team340.robot.commands.gears.ManualArmClose;
+import org.usfirst.frc.team340.robot.commands.gears.ManualArmOpen;
+import org.usfirst.frc.team340.robot.commands.gears.ManualClawDown;
+import org.usfirst.frc.team340.robot.commands.gears.ManualClawUp;
+import org.usfirst.frc.team340.robot.commands.gears.ManualPusherExtend;
+import org.usfirst.frc.team340.robot.commands.gears.ManualPusherRetract;
+import org.usfirst.frc.team340.robot.commands.gears.ManualRollersSpinIn;
+import org.usfirst.frc.team340.robot.commands.gears.ManualRollersSpinOut;
+import org.usfirst.frc.team340.robot.commands.gears.ManualSpinStop;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -43,8 +56,26 @@ public class OI {
 	private Joystick board = new Joystick(2);
 	
 	public OI() {
-//	    driverA.whenPressed(new ConditionalCommandTest(new ClawClose()));
-//	    driverB.whenPressed(new ConditionalCommandTest(new ClawClose(), new ClawOpen()));
+		
+		//Manual testing for climber
+		coDriverA.whenPressed(new ManualClimberGoAtEngagementSpeed());
+		coDriverA.whenReleased(new ManualClimberGoStopped());
+		coDriverB.whenPressed(new ManualGoAtClimbSpeed());
+		coDriverB.whenReleased(new ManualClimberGoStopped());
+		
+		//Manual testing for claw
+		coDriverX.whenPressed(new ManualArmClose());
+		coDriverY.whenPressed(new ManualArmOpen());
+		coDriverLS.whenPressed(new ManualClawDown());
+		coDriverLB.whenPressed(new ManualClawUp());
+		coDriverStart.whenPressed(new ManualPusherExtend());
+		coDriverBack.whenPressed(new ManualPusherRetract());
+		
+		//Manual testing for rollers
+		coDriverRB.whenPressed(new ManualRollersSpinIn());
+		coDriverRB.whenReleased(new ManualSpinStop());
+		coDriverRS.whenPressed(new ManualRollersSpinOut());
+		coDriverRS.whenReleased(new ManualSpinStop());
 	}
 	
 	/**
