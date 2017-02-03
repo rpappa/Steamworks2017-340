@@ -1,0 +1,22 @@
+@startuml
+
+'''''states
+
+FirstDiagram: <img:/Images_For_Diagrams/1Diagram.png>
+SecondDiagram: <img:/Images_For_Diagrams/2Diagram.png>
+ThirdDiagram: <img:/Images_For_Diagrams/3Diagram.png>
+FourthDiagram: <img:/Images_For_Diagrams/4Diagram.png>
+FifthDiagram: <img:/Images_For_Diagrams/5Diagram_resized.png>
+SixthDiagram: <img:/Images_For_Diagrams/6Diagram.png>
+SeventhDiagram: <img:/Images_For_Diagrams/7Diagram.png>
+
+'''''transitions
+
+FirstDiagram -right-> SecondDiagram
+SecondDiagram -right-> ThirdDiagram
+ThirdDiagram -right-> FourthDiagram
+FirstDiagram -down-> FifthDiagram
+FifthDiagram -right-> SixthDiagram
+SixthDiagram -right-> SeventhDiagram
+
+@enduml
