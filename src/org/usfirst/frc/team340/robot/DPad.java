@@ -18,7 +18,7 @@ public class DPad extends Button {
     public DPad(Joystick joy, Direction dir) {
     	this(joy, dir.getDirection());
     }
-    	
+    		
     /**
      * Class for dealing with the D-Pad
      * aka PoV hat
