@@ -15,7 +15,7 @@ public class ManualClawUp extends Command {
     	requires(Robot.claw);
     }
 
-    // Called just before this Command runs the first time
+    // Called just before tis Command runs the first time
     protected void initialize() {
     	System.out.println("initialize ManualClawUp");
     	Robot.claw.goUp();
@@ -27,7 +27,7 @@ public class ManualClawUp extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.claw.isUp();
+        return false;
     }
 
     // Called once after isFinished returns true
