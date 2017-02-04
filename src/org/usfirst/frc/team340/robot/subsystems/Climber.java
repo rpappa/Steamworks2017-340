@@ -17,7 +17,9 @@ public class Climber extends Subsystem {
 	private static final double CLIMB_SPEED = 0.75;
 	
 	private Spark drumOne;
-	@SuppressWarnings("unused") private Spark drumTwo; //TODO: see if we need to worry about both (check for sync)
+	
+	@SuppressWarnings("unused")
+	private Spark drumTwo; //TODO: see if we need to worry about both (check for sync)
 	
 	public Climber() {
 		drumOne = new Spark(RobotMap.CLIMBER_DRUM_PORT_ONE);
