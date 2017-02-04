@@ -1,32 +1,35 @@
 package org.usfirst.frc.team340.robot.commands.climb;
 
-import edu.wpi.first.wpilibj.command.Command;
+import org.usfirst.frc.team340.robot.Robot;
 
-/**
- *
+import edu.wpi.first.wpilibj.command.TimedCommand;
+
+ /**
+ * The robot is driving under human control.
+ * The climb motors will turn on and begin to go at engagement speed.
+ * 
+ * The command ends after a time delay.
  */
-public class ClimbMotorsOn extends Command {
+public class ClimbMotorsOn extends TimedCommand {
 
-    public ClimbMotorsOn() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+    public ClimbMotorsOn(double timeout) {
+		super(timeout);
+		requires(Robot.climber);	
     }
 
-    // Called just before this Command runs the first time
+	// Called just before this Command runs the first time
     protected void initialize() {
+    	System.out.println("initialize ClimbMotorsOn");
+    	Robot.climber.goAtEngagementSpeed();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     }
 
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return false;
-    }
-
     // Called once after isFinished returns true
     protected void end() {
+    	System.out.println("end ClimbMotorsOn");
     }
 
     // Called when another command which requires one or more of the same

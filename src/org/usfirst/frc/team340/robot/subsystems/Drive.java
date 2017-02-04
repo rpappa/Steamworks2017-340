@@ -11,8 +11,10 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * Subsystem that controls the drive train
  */
 public class Drive extends Subsystem {
-	private double leftMotorSpeed = 0;
-    private double rightMotorSpeed = 0;
+	
+	//Makes maths easier when deciding what speed to set the motors to
+	private double leftMotorSpeed;
+    private double rightMotorSpeed;
     
     private Solenoid drop;
     private Talon leftDrive;
@@ -24,6 +26,9 @@ public class Drive extends Subsystem {
      * ports on the PDP
      */
     public Drive() {
+    	leftMotorSpeed = 0;
+    	rightMotorSpeed = 0;
+    	
 		drop = new Solenoid(RobotMap.DROP_SOLENOID_CHANNEL);
 		leftDrive = new Talon(RobotMap.LEFT_DRIVE_PORT);
 		rightDrive = new Talon(RobotMap.RIGHT_DRIVE_PORT);
@@ -132,5 +137,10 @@ u	 *
 		}
 		
 		setBothDrive(leftMotorSpeed, rightMotorSpeed);
+	}
+
+	public void goStop() {
+		// TODO Auto-generated method stub
+		
 	}
 }

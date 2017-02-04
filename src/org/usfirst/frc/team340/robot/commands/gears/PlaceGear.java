@@ -5,15 +5,16 @@ import org.usfirst.frc.team340.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- * The claw is moving downwards and the arm is opening in preparation to grab the gear.
- * The pusher is still retracted inside the claw.
- * The rollers are spinning inwards to bring in the gear.
+ * The claw is upward and the arm is opened.
+ * The pusher has been extended to move the gear.
+ * The rollers are not spinning.
  * 
- * The command ends when a sensor reads that the gear has been acquired.
+ * The command ends after a time delay and when a sensor
+ * has read that the gear is no longer acquired.
  */
-public class HarvestMode extends Command {
+public class PlaceGear extends Command {
 
-    public HarvestMode() {
+    public PlaceGear() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.claw);
@@ -21,11 +22,11 @@ public class HarvestMode extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	System.out.println("initialize HarvestMode");
-    	Robot.claw.goDown();
+    	System.out.println("initialize PlaceGear");
+    	Robot.claw.goExtend();
+    	Robot.claw.goUp();
     	Robot.claw.goOpen();
-    	Robot.claw.spinIn();
-    	Robot.claw.goRetract();
+    	Robot.claw.spinStop();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -34,12 +35,12 @@ public class HarvestMode extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.claw.whenGearIsAcquired();
+        return Robot.claw.whenGearIsNotAcquired();
     }
 
     // Called once after isFinished returns true
-    protected void end() {
-    	System.out.println("end HarvestMode");
+    protected void end() {    	
+    	System.out.println("end PlaceGear");
     }
 
     // Called when another command which requires one or more of the same

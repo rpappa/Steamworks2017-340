@@ -5,15 +5,11 @@ import org.usfirst.frc.team340.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- * The claw is moving downwards and the arm is opening in preparation to grab the gear.
- * The pusher is still retracted inside the claw.
- * The rollers are spinning inwards to bring in the gear.
- * 
- * The command ends when a sensor reads that the gear has been acquired.
+ *
  */
-public class HarvestMode extends Command {
+public class ManualRollersSpinIn extends Command {
 
-    public HarvestMode() {
+    public ManualRollersSpinIn() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.claw);
@@ -21,11 +17,8 @@ public class HarvestMode extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	System.out.println("initialize HarvestMode");
-    	Robot.claw.goDown();
-    	Robot.claw.goOpen();
+    	System.out.println("initialize ManualRollersSpinIn");
     	Robot.claw.spinIn();
-    	Robot.claw.goRetract();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -39,7 +32,7 @@ public class HarvestMode extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	System.out.println("end HarvestMode");
+    	System.out.println("end ManualRollersSpinIn");
     }
 
     // Called when another command which requires one or more of the same

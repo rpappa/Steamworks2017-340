@@ -1,6 +1,7 @@
 package org.usfirst.frc.team340.robot;
 
 import org.usfirst.frc.team340.robot.subsystems.Claw;
+import org.usfirst.frc.team340.robot.subsystems.Climber;
 import org.usfirst.frc.team340.robot.subsystems.Drive;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -18,6 +19,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 public class Robot extends IterativeRobot {
     public static Drive drive;
     public static Claw claw;
+    public static Climber climber;
     public static OI oi;
 
     Command autonomousCommand;
@@ -31,6 +33,7 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 	    drive = new Drive();
 	    claw = new Claw();
+	    climber = new Climber();
 	    oi = new OI();
 	    // chooser.addObject("My Auto", new MyAutoCommand());
 //	    SmartDashboard.putData("Auto mode", chooser);

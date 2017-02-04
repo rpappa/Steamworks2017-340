@@ -1,31 +1,24 @@
-package org.usfirst.frc.team340.robot.commands.gears;
+package org.usfirst.frc.team340.robot.commands.climb;
 
 import org.usfirst.frc.team340.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- * The claw is moving downwards and the arm is opening in preparation to grab the gear.
- * The pusher is still retracted inside the claw.
- * The rollers are spinning inwards to bring in the gear.
- * 
- * The command ends when a sensor reads that the gear has been acquired.
+ *
  */
-public class HarvestMode extends Command {
+public class ManualGoAtClimbSpeed extends Command {
 
-    public HarvestMode() {
+    public ManualGoAtClimbSpeed() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.claw);
+    	requires(Robot.climber);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	System.out.println("initialize HarvestMode");
-    	Robot.claw.goDown();
-    	Robot.claw.goOpen();
-    	Robot.claw.spinIn();
-    	Robot.claw.goRetract();
+    	System.out.println("initialize ManualGoAtClimbSpeed");
+    	Robot.climber.goAtClimbSpeed();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -34,12 +27,12 @@ public class HarvestMode extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.claw.whenGearIsAcquired();
+        return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	System.out.println("end HarvestMode");
+    	System.out.println("end ManualGoAtClimbSpeed");
     }
 
     // Called when another command which requires one or more of the same
