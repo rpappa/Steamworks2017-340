@@ -2,6 +2,7 @@ package org.usfirst.frc.team340.robot.subsystems;
 
 import org.usfirst.frc.team340.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.TalonSRX;
@@ -24,6 +25,8 @@ public class Claw extends Subsystem {
 	private static final Value PUSHER_OUT = Value.kForward;
 	private static final Value PUSHER_IN = Value.kReverse;
 	
+	private DigitalInput gearSensorLeft;
+	private DigitalInput gearSensorRight;
 	private DoubleSolenoid claw;
 	private DoubleSolenoid hinge;
 	private DoubleSolenoid pusher;
@@ -36,6 +39,8 @@ public class Claw extends Subsystem {
 	 * solenoids
 	 */
 	public Claw() {
+		gearSensorLeft = new DigitalInput(RobotMap.GEAR_SENSOR_LEFT_CHANNEL);
+		gearSensorRight = new DigitalInput(RobotMap.GEAR_SENSOR_RIGHT_CHANNEL);
 		claw = new DoubleSolenoid(RobotMap.CLAW_SOLENOID_FORWARD_CHANNEL, RobotMap.CLAW_SOLENOID_REVERSE_CHANNEL);
 		hinge = new DoubleSolenoid(RobotMap.ARM_SOLENOID_FORWARD_CHANNEL, RobotMap.ARM_SOLENOID_REVERSE_CHANNEL);
 		pusher = new DoubleSolenoid(RobotMap.PUSHER_SOLENOID_FORWARD_CHANNEL, RobotMap.PUSHER_SOLENOID_REVERSE_CHANNEL);
@@ -152,11 +157,14 @@ public class Claw extends Subsystem {
 	}
 	
 	/**
+	 * Tests both gear sensors
+	 * to determine gear status<br>
+	 * <b><em>TODO: rename this</b></em>
 	 * @return if the gear has
 	 * successfully been acquired
 	 */
 	public boolean whenGearIsAcquired() {
-		return false; //TODO: make this
+		return gearSensorLeft.get() || gearSensorRight.get();
 	}
 	
 	/**
