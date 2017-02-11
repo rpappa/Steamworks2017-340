@@ -2,7 +2,7 @@ package org.usfirst.frc.team340.robot.subsystems;
 
 import org.usfirst.frc.team340.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -13,17 +13,20 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * drum
  */
 public class Climber extends Subsystem {
-	private static final double ENGAGEMENT_SPEED = 0.5;
-	private static final double CLIMB_SPEED = 0.75;
+	private static final int LIFTOFF_CURRENT = 110; //TODO: perfect this
+	private static final int TOUCHPAD_CURRENT = 120; //TODO: perfect this
 	
-	private Spark drumOne;
+	private static final double ENGAGEMENT_SPEED = 0.5; //TODO: perfect this
+	private static final double CLIMB_SPEED = 0.75; //TODO: perfect this
+	
+	private TalonSRX drumOne;
 	
 	@SuppressWarnings("unused")
-	private Spark drumTwo; //TODO: see if we need to worry about both (check for sync)
+	private TalonSRX drumTwo; //TODO: see if we need to worry about both (check for sync)
 	
 	public Climber() {
-		drumOne = new Spark(RobotMap.CLIMBER_DRUM_PORT_ONE);
-		drumTwo = new Spark(RobotMap.CLIMBER_DRUM_PORT_TWO);
+		drumOne = new TalonSRX(RobotMap.CLIMBER_DRUM_PORT_ONE);
+		drumTwo = new TalonSRX(RobotMap.CLIMBER_DRUM_PORT_TWO);
 	}
 
     /**
@@ -92,6 +95,10 @@ public class Climber extends Subsystem {
 	 */
 	public boolean isStopped(){
 		return drumOne.get() ==0;
+	}
+	
+	public boolean isLiftingOff(){
+		return false; //FIXME: this 
 	}
 
 	/**
